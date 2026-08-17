@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PARTY ORDERS - TEXFRIEND</title>
+    <!-- IMPORTANT: config.js must load first -->
+    <script src="config.js"></script>
     <script src="translator.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         
         html, body { 
             width: 100%;
-            height: 100%;
-            background: #030712; 
+            min-height: 100vh;
+            background: #030712 !important; 
             color: #1E2B23; 
         }
 
@@ -24,18 +26,21 @@
             justify-content: flex-start;
         }
 
+        html body .container,
+        div.container,
         .container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0;
-            background: #FFFFFF;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.06);
-            border: 1px solid rgba(82, 110, 81, 0.15);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            width: 100% !important;
+            max-width: 800px !important;
+            margin: 0 auto !important;
+            background: #FFFFFF !important;
+            background-color: #FFFFFF !important;
+            padding: 20px !important;
+            border-radius: 20px !important;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4) !important;
+            border: 1px solid rgba(82, 110, 81, 0.25) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 15px !important;
         }
 
         .top-nav {
@@ -51,15 +56,15 @@
             gap: 5px;
             color: #FFFFFF;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 11px;
-            background: #1A2421; 
+            background: #1A1; 
             padding: 8px 16px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(74, 124, 89, 0.25);
             transition: all 0.3s ease;
         }
-        .back-btn:hover { background: #000000; transform: translateY(-2px); }
+        .back-btn:hover { background: #33593D; transform: translateY(-2px); }
 
         #bitmapDisplayContainer { text-align: right; display: flex; align-items: center; gap: 10px; }
         #bitmapDisplayContainer img {
@@ -73,24 +78,30 @@
         #bitmapDisplayContainer img:hover { transform: scale(1.1); }
 
         .card-header {
-            font-size: 16px;
-            margin-bottom: 5px;
-            font-weight: 700;
-            color: #2F4F38;
+            font-size: 18px !important;
+            font-weight: 800 !important;
+            color: #2F4F38 !important;
             text-align: left;
             position: relative;
-            padding-left: 12px;
+            padding-left: 14px;
         }
+
         .card-header::before {
-            content: ''; position: absolute; left: 0; top: 10%; height: 80%; width: 4px;
-            background: #4A7C59; border-radius: 4px;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 4px;
+            background: #4A7C59;
+            border-radius: 4px;
         }
 
         .form-section {
-            background: #F8FAF8;
-            border: 1px solid #E2E8E2;
-            border-radius: 12px;
-            padding: 15px;
+            background: #F8FAF8 !important;
+            border: 1px solid #E2E8E2 !important;
+            border-radius: 14px;
+            padding: 18px 15px 15px 15px;
             margin-bottom: 5px;
             position: relative;
         }
@@ -118,7 +129,7 @@
         label {
             display: block;
             font-weight: 600;
-            color: #4A554A;
+            color: #4A554A !important;
             font-size: 10px;
             margin-bottom: 4px;
         }
@@ -126,21 +137,21 @@
         input, select {
             width: 100%;
             padding: 10px 12px;
-            border: 1px solid #D1DED1;
+            border: 1px solid #D1DED1 !important;
             border-radius: 8px;
             font-size: 11px;
-            background: #FFFFFF;
-            color: #1E2B23;
+            background: #FFFFFF !important;
+            color: #1E2B23 !important;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
 
         input:focus, select:focus {
-            border-color: #4A7C59;
+            border-color: #4A7C59 !important;
             outline: none;
-            background: #FFFFFF;
-            box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.15);
+            background: #FFFFFF !important;
+            box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.15) !important;
         }
         
         input::placeholder { color: #A0AFA0; font-weight: 400; }
@@ -155,17 +166,16 @@
             font-weight: 700;
             font-size: 13px;
             cursor: pointer;
-            background: linear-gradient(135deg, #4A7C59, #33593D);
+            background: linear-gradient(135deg, #4A79, #33593D);
             box-shadow: 0 6px 15px rgba(74, 124, 89, 0.25);
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(74, 124, 89, 0.35); }
-        .btn-main:active { transform: translateY(1px); }
 
         .popup-trigger-btn {
-            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+            background: linear-gradient(135deg, #2AA6, #1D4FC8);
             color: white;
             border: none;
             padding: 14px;
@@ -180,7 +190,6 @@
             letter-spacing: 0.5px;
         }
         .popup-trigger-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35); }
-        .popup-trigger-btn:active { transform: translateY(1px); }
 
         .overlay-modal {
             display: none;
@@ -264,18 +273,22 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <datalist id="countsList">
+        <option value="20s"><option value="30s"><option value="40s"><option value="60s">
+        <option value="80s"><option value="2/40"><option value="2/60"><option value="2/80"><option value="2/60s">
+    </datalist>
+
+    <div class="container" style="background: #FFFFFF !important; background-color: #FFFFFF !important;">
         <div class="top-nav">
             <a href="dashboard.html" class="back-btn">← Back to Menu</a>
             <div id="bitmapDisplayContainer"></div>
         </div>
         
-        <!-- 📌 Header with Checkbox -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-            <h2 class="card-header" style="margin-bottom: 0;">Create Party Order</h2>
-            <label style="display: flex; align-items: center; gap: 6px; background: #ECFDF5; border: 1px solid #10B981; padding: 6px 12px; border-radius: 8px; cursor: pointer; margin: 0;">
-                <input type="checkbox" id="orderStatusToggle" onchange="quickCompleteToggle()" style="width: 16px; height: 16px; margin: 0; cursor: pointer;">
-                <span style="font-size: 11px; font-weight: 800; color: #059669; text-transform: uppercase; margin: 0;">Completed</span>
+            <h2 class="card-header" style="color: #2F4F38 !important; margin-bottom: 0;">Create Party Order</h2>
+            <label style="display: flex; align-items: center; gap: 6px; background: #EAF2EC; border: 1px solid #B4D3BC; padding: 6px 12px; border-radius: 8px; cursor: pointer; margin: 0;">
+                <input type="checkbox" id="orderStatusToggle" onchange="quickCompleteToggle()" style="width: 16px; height: 16px; margin: 0; cursor: pointer; accent-color: #4A7C59;">
+                <span style="font-size: 11px; font-weight: 800; color: #2F4F38; text-transform: uppercase; margin: 0;">Completed</span>
             </label>
         </div>
 
@@ -316,12 +329,21 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Warp Count</label>
-                        <input type="text" id="warpCount" placeholder="Warp">
+                        <label>Base Beam (Warp)</label>
+                        <input type="text" id="baseBeamCount" list="countsList" placeholder="e.g. 2/60">
                     </div>
                     <div class="form-group">
-                        <label>Weft Count</label>
-                        <input type="text" id="weftCount" placeholder="Weft">
+                        <label>Top Beam (Warp)</label>
+                        <input type="text" id="topBeamCount" list="countsList" placeholder="e.g. 2/40">
+                    </div>
+                    <!-- 🟢 NEW: Weft 1 and Weft 2 Fields -->
+                    <div class="form-group">
+                        <label>Weft 1</label>
+                        <input type="text" id="weftCount" list="countsList" placeholder="Weft 1">
+                    </div>
+                    <div class="form-group">
+                        <label>Weft 2</label>
+                        <input type="text" id="weftCount2" list="countsList" placeholder="Weft 2">
                     </div>
                     <div class="form-group">
                         <label>Reed</label>
@@ -345,20 +367,12 @@
             <!-- Section 3: Commercials -->
             <div class="form-section">
                 <div class="section-badge">Commercials</div>
-                <div class="form-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="form-grid" style="grid-template-columns: 1fr 1fr;">
                     <div class="form-group">
                         <label>Order Metres</label>
-                        <input type="number" step="0.01" id="orderMtr" placeholder="0.00 Metres" oninput="calculateProductionMeter()">
+                        <input type="number" step="0.01" id="orderMtr" placeholder="0.00 Metres">
                     </div>
                     <div class="form-group">
-                        <label>Input %</label>
-                        <input type="number" step="0.01" id="inputPercent" placeholder="0 %" value="0" oninput="calculateProductionMeter()">
-                    </div>
-                    <div class="form-group">
-                        <label>Production Metres</label>
-                        <input type="number" step="0.01" id="productionMeter" placeholder="0.00 Metres" oninput="calculateOrderMeterFromProduction()">
-                    </div>
-                    <div class="form-group" style="grid-column: span 3;">
                         <label>Rate / Metre (₹)</label>
                         <input type="number" step="0.01" id="rateMtr" placeholder="₹ 0.00">
                     </div>
@@ -371,7 +385,7 @@
         <button type="button" class="popup-trigger-btn" onclick="openModal('savedOrdersModal')">📊 View Saved Orders Data</button>
     </div>
 
-    <!-- 📌 Full-Screen Pop-up Modal for Saved Orders -->
+    <!-- Full-Screen Modal for Saved Orders -->
     <div id="savedOrdersModal" class="overlay-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -387,8 +401,9 @@
                                 <th>Party Name</th>
                                 <th>PO No</th>
                                 <th>Design No</th>
+                                <th>Base Beam</th>
+                                <th>Top Beam</th>
                                 <th>Order Metres</th>
-                                <th>Prod Metres</th>
                                 <th>Rate/Metre</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -401,7 +416,7 @@
         </div>
     </div>
 
-    <!-- 📌 Fullscreen Image Popup Modal -->
+    <!-- Fullscreen Image Modal -->
     <div id="fullscreenModal" class="fullscreen-modal" onclick="closeFullscreenImage()">
         <button class="close-fullscreen">Close ✕</button>
         <img id="fullscreenImg" src="" alt="Fullscreen Preview">
@@ -461,8 +476,8 @@
 
             let select = document.getElementById('designNumber');
             let html = '<option value="">Select Design</option>';
-            Array.from(allDesigns).forEach(d => {
-                if(d) html += `<option value="${d}">${d}</option>`;
+            Array.from(allDesigns).filter(Boolean).forEach(d => {
+                html += `<option value="${d}">${d}</option>`;
             });
             select.innerHTML = html;
 
@@ -470,22 +485,6 @@
             if(activeDesign && allDesigns.has(activeDesign)) {
                 select.value = activeDesign;
                 onDesignSelect(activeDesign);
-            }
-        }
-
-        function calculateProductionMeter() {
-            let orderMtr = parseFloat(document.getElementById('orderMtr').value) || 0;
-            let inputPercent = parseFloat(document.getElementById('inputPercent').value) || 0;
-            let productionMeter = orderMtr + (orderMtr * inputPercent / 100);
-            document.getElementById('productionMeter').value = productionMeter > 0 ? productionMeter.toFixed(2) : '';
-        }
-
-        function calculateOrderMeterFromProduction() {
-            let prodMtr = parseFloat(document.getElementById('productionMeter').value) || 0;
-            let inputPercent = parseFloat(document.getElementById('inputPercent').value) || 0;
-            if (inputPercent > -100) {
-                let orderMtr = prodMtr / (1 + (inputPercent / 100));
-                document.getElementById('orderMtr').value = orderMtr > 0 ? orderMtr.toFixed(2) : '';
             }
         }
 
@@ -508,10 +507,10 @@
             if(!src || src === '' || src === 'null') return;
             document.getElementById('fullscreenImg').src = src;
             document.getElementById('fullscreenModal').style.display = 'flex';
-        }
+        };
         window.closeFullscreenImage = function() {
             document.getElementById('fullscreenModal').style.display = 'none';
-        }
+        };
 
         function loadBitmapImage() {
             let activeDesign = localStorage.getItem('selected_design_number');
@@ -538,32 +537,54 @@
             loadBitmapImage();
 
             if(val) {
-                let designSpecs = JSON.parse(localStorage.getItem('design_specs') || '{}');
+                let clean = val.toString().replace('#', '').trim().toLowerCase();
                 
-                let clean = val ? val.toString().replace('#', '').trim().toLowerCase() : '';
-                let specKey = Object.keys(designSpecs).find(k => (k ? k.toString().replace('#', '').trim().toLowerCase() : '') === clean) || val;
-
-                let specStatus = (designSpecs[specKey] && designSpecs[specKey].status) ? designSpecs[specKey].status.toLowerCase() : '';
+                // Data sources loading
+                let designMasters = JSON.parse(localStorage.getItem('design_masters_data')) || [];
+                let designSpecs = JSON.parse(localStorage.getItem('design_specs') || '{}');
                 let orders = JSON.parse(localStorage.getItem('party_orders_data')) || [];
-                let order = orders.find(x => x.designNumber === val || x.designNo === val);
 
-                if (specStatus === 'completed' || (order && order.status && order.status.toLowerCase() === 'completed')) {
-                    document.getElementById('orderStatusToggle').checked = true;
-                } else {
-                    document.getElementById('orderStatusToggle').checked = false;
+                // 1. Find from Design Master (Priority 1)
+                let foundMaster = {};
+                if (Array.isArray(designMasters)) {
+                    foundMaster = designMasters.find(d => {
+                        let dName = (d.name || d.designNo || '').toString().replace('#', '').trim().toLowerCase();
+                        return dName === clean;
+                    }) || {};
                 }
 
-                let specs = designSpecs[specKey] || { warp: '', weft: '', reed: '', pick: '' };
-                document.getElementById('warpCount').value = specs.warp || '';
-                document.getElementById('weftCount').value = specs.weft || '';
-                document.getElementById('reed').value = specs.reed || '';
-                document.getElementById('pick').value = specs.pick || '';
+                // 2. Find from Design Specs
+                let specKey = Object.keys(designSpecs).find(k => (k ? k.toString().replace('#', '').trim().toLowerCase() : '') === clean) || val;
+                let specs = designSpecs[specKey] || {};
+
+                // Status Toggle update
+                let specStatus = (specs.status || foundMaster.status || '').toLowerCase();
+                document.getElementById('orderStatusToggle').checked = (specStatus === 'completed');
+
+                // Auto-filling fields with Design Master priority
+                document.getElementById('baseBeamCount').value = foundMaster.warp1 || foundMaster.baseBeamCount || specs.warp || specs.baseBeamCount || '2/60';
+                document.getElementById('topBeamCount').value = foundMaster.warp2 || foundMaster.topBeamCount || specs.warp2 || specs.topBeamCount || '';
+                
+                // 🟢 NEW: Auto-filling Weft 1 and Weft 2
+                document.getElementById('weftCount').value = foundMaster.weftCount || foundMaster.weft || specs.weftCount || specs.weft || '40s';
+                document.getElementById('weftCount2').value = foundMaster.weft2 || specs.weft2 || '';
+                
+                // Reed, Pick, Width (Directly from Design Master)
+                document.getElementById('reed').value = foundMaster.reed || specs.reed || '';
+                document.getElementById('pick').value = foundMaster.pick || specs.pick || '';
+                document.getElementById('width').value = foundMaster.width || specs.width || specs.finishWidth || '58';
+                
+                document.getElementById('weaveType').value = foundMaster.weave || foundMaster.weaveType || specs.weave || specs.weaveType || '';
             } else {
                 document.getElementById('orderStatusToggle').checked = false;
-                document.getElementById('warpCount').value = '';
+                document.getElementById('baseBeamCount').value = '';
+                document.getElementById('topBeamCount').value = '';
                 document.getElementById('weftCount').value = '';
+                document.getElementById('weftCount2').value = '';
                 document.getElementById('reed').value = '';
                 document.getElementById('pick').value = '';
+                document.getElementById('width').value = '58';
+                document.getElementById('weaveType').value = '';
             }
         }
 
@@ -585,12 +606,14 @@
             }
 
             let statusText = isCompleted ? 'completed' : 'running';
+            let clean = designNo.toString().replace('#', '').trim().toLowerCase();
 
             let orders = JSON.parse(localStorage.getItem('party_orders_data')) || [];
-            let index = orders.findIndex(x => (x.designNumber === designNo || x.designNo === designNo));
+            let index = orders.findIndex(x => (x.designNumber || x.designNo || '').toString().replace('#','').trim().toLowerCase() === clean);
 
             if(index > -1) {
                 orders[index].status = statusText;
+                orders[index].width = document.getElementById('width').value.trim() || '58';
             } else {
                 let newOrder = {
                     id: Date.now(),
@@ -598,15 +621,16 @@
                     partyName: document.getElementById('partyName').value.trim() || 'Direct Order',
                     poNo: document.getElementById('poNumber').value.trim() || 'N/A',
                     designNumber: designNo,
-                    warpCount: document.getElementById('warpCount').value.trim() || '-',
+                    designNo: designNo,
+                    baseBeamCount: document.getElementById('baseBeamCount').value.trim() || '-',
+                    topBeamCount: document.getElementById('topBeamCount').value.trim() || '-',
                     weftCount: document.getElementById('weftCount').value.trim() || '-',
+                    weft2: document.getElementById('weftCount2').value.trim() || '-',
                     reed: document.getElementById('reed').value.trim() || '-',
                     pick: document.getElementById('pick').value.trim() || '-',
-                    width: document.getElementById('width').value.trim() || '-',
+                    width: document.getElementById('width').value.trim() || '58',
                     weaveType: document.getElementById('weaveType').value.trim() || '-',
                     orderMtr: document.getElementById('orderMtr').value.trim() || '0',
-                    inputPercent: document.getElementById('inputPercent').value.trim() || '0',
-                    productionMeter: document.getElementById('productionMeter').value.trim() || '0',
                     rateMtr: document.getElementById('rateMtr').value.trim() || '0',
                     deliveryDate: document.getElementById('deliveryDate').value || new Date().toISOString().split('T')[0],
                     status: statusText
@@ -616,13 +640,13 @@
             localStorage.setItem('party_orders_data', JSON.stringify(orders));
 
             let designSpecs = JSON.parse(localStorage.getItem('design_specs')) || {};
-            let clean = designNo ? designNo.toString().replace('#', '').trim().toLowerCase() : '';
             let specKey = Object.keys(designSpecs).find(k => (k ? k.toString().replace('#', '').trim().toLowerCase() : '') === clean) || designNo;
             
             if(!designSpecs[specKey]) {
                 designSpecs[specKey] = {};
             }
             designSpecs[specKey].status = statusText;
+            designSpecs[specKey].width = document.getElementById('width').value.trim() || '58';
             localStorage.setItem('design_specs', JSON.stringify(designSpecs));
 
             try {
@@ -650,25 +674,10 @@
             }
             
             let designNo = document.getElementById('designNumber').value;
-            let cleanDesign = designNo ? designNo.replace('#', '').trim().toLowerCase() : '';
-
-            if(editingId === null && cleanDesign) {
-                let alreadyExists = partyOrders.some(x => {
-                    let d = x.designNumber || x.designNo || '';
-                    return d.replace('#', '').trim().toLowerCase() === cleanDesign;
-                });
-
-                if(alreadyExists) {
-                    let confirmReEntry = confirm("இந்த டிசைனுக்கு ஏற்கனவே பார்ட்டி ஆர்டர் என்ட்ரி செய்யப்பட்டுள்ளது. மீண்டும் ரீ-என்ட்ரி செய்ய வேண்டுமா?");
-                    if(!confirmReEntry) {
-                        return;
-                    }
-                    partyOrders = partyOrders.filter(x => {
-                        let d = x.designNumber || x.designNo || '';
-                        return d.replace('#', '').trim().toLowerCase() !== cleanDesign;
-                    });
-                }
-            }
+            let baseBeam = document.getElementById('baseBeamCount').value.trim() || '-';
+            let topBeam = document.getElementById('topBeamCount').value.trim() || '-';
+            let combinedWarp = (topBeam && topBeam !== '-') ? `${baseBeam}, ${topBeam}` : baseBeam;
+            let currentWidth = document.getElementById('width').value.trim() || '58';
 
             const orderData = {
                 id: editingId !== null ? editingId : Date.now(),
@@ -676,15 +685,20 @@
                 partyName: document.getElementById('partyName').value.trim() || 'N/A',
                 poNo: document.getElementById('poNumber').value.trim() || 'N/A',
                 designNumber: designNo || 'N/A',
-                warpCount: document.getElementById('warpCount').value.trim() || '-',
+                designNo: designNo || 'N/A',
+                baseBeamCount: baseBeam,
+                topBeamCount: topBeam,
+                warpCount: combinedWarp,
                 weftCount: document.getElementById('weftCount').value.trim() || '-',
+                weft2: document.getElementById('weftCount2').value.trim() || '-',
                 reed: document.getElementById('reed').value.trim() || '-',
                 pick: document.getElementById('pick').value.trim() || '-',
-                width: document.getElementById('width').value.trim() || '-',
+                width: currentWidth,
+                finishWidth: currentWidth,
                 weaveType: document.getElementById('weaveType').value.trim() || '-',
                 orderMtr: document.getElementById('orderMtr').value.trim() || '0',
-                inputPercent: document.getElementById('inputPercent').value.trim() || '0',
-                productionMeter: document.getElementById('productionMeter').value.trim() || '0',
+                productionMeter: document.getElementById('orderMtr').value.trim() || '0',
+                prodMtr: document.getElementById('orderMtr').value.trim() || '0',
                 rateMtr: document.getElementById('rateMtr').value.trim() || '0',
                 deliveryDate: document.getElementById('deliveryDate').value || '',
                 status: document.getElementById('orderStatusToggle').checked ? 'completed' : 'running'
@@ -699,19 +713,36 @@
                     partyOrders[index] = orderData;
                 }
                 editingId = null;
-                alert("Party Order updated to Cloud successfully! ✅☁️");
             } else {
-                partyOrders.push(orderData);
-                alert("Party Order saved to Cloud successfully! ✅☁️");
+                let existingIndex = partyOrders.findIndex(x => {
+                    let d = x.designNumber || x.designNo || '';
+                    return designNo && d.toString().replace('#', '').trim().toLowerCase() === designNo.toString().replace('#', '').trim().toLowerCase();
+                });
+
+                if(existingIndex > -1) {
+                    partyOrders[existingIndex] = { ...partyOrders[existingIndex], ...orderData };
+                } else {
+                    partyOrders.push(orderData);
+                }
             }
 
             let designSpecs = JSON.parse(localStorage.getItem('design_specs')) || {};
             if(designNo) {
-                let clean = designNo ? designNo.toString().replace('#', '').trim().toLowerCase() : '';
+                let clean = designNo.toString().replace('#', '').trim().toLowerCase();
                 let specKey = Object.keys(designSpecs).find(k => (k ? k.toString().replace('#', '').trim().toLowerCase() : '') === clean) || designNo;
 
                 if(!designSpecs[specKey]) designSpecs[specKey] = {};
                 designSpecs[specKey].status = orderData.status;
+                designSpecs[specKey].baseBeamCount = baseBeam;
+                designSpecs[specKey].topBeamCount = topBeam;
+                designSpecs[specKey].baseCount = combinedWarp;
+                
+                // 🟢 NEW: Update weft values in designSpecs
+                designSpecs[specKey].weftCount = document.getElementById('weftCount').value.trim();
+                designSpecs[specKey].weft2 = document.getElementById('weftCount2').value.trim();
+                
+                designSpecs[specKey].width = currentWidth;
+                designSpecs[specKey].finishWidth = currentWidth;
                 localStorage.setItem('design_specs', JSON.stringify(designSpecs));
                 
                 if (window.firebaseSave) {
@@ -731,12 +762,13 @@
             updatePartyTable();
             
             document.getElementById('partyOrderForm').reset();
-            document.getElementById('inputPercent').value = '0';
             document.getElementById('orderStatusToggle').checked = false;
             document.getElementById('orderDate').valueAsDate = new Date();
+            document.getElementById('width').value = '58';
             
             loadDesignList();
             btn.innerText = "✅ Save Order Details";
+            alert("Party Order saved successfully! ✅☁️");
         }
 
         function editOrder(id) {
@@ -755,15 +787,18 @@
             document.getElementById('partyName').value = item.partyName || '';
             document.getElementById('poNumber').value = item.poNo || '';
             document.getElementById('designNumber').value = item.designNumber || item.designNo || '';
-            document.getElementById('warpCount').value = item.warpCount || '';
+            document.getElementById('baseBeamCount').value = item.baseBeamCount || item.warpCount || '';
+            document.getElementById('topBeamCount').value = item.topBeamCount || '';
+            
+            // 🟢 NEW: Set Weft 1 and Weft 2 during edit
             document.getElementById('weftCount').value = item.weftCount || '';
+            document.getElementById('weftCount2').value = item.weft2 || '';
+            
             document.getElementById('reed').value = item.reed || '';
             document.getElementById('pick').value = item.pick || '';
-            document.getElementById('width').value = item.width || '';
+            document.getElementById('width').value = item.width || item.finishWidth || '58';
             document.getElementById('weaveType').value = item.weaveType || '';
-            document.getElementById('orderMtr').value = item.orderMtr || '';
-            document.getElementById('inputPercent').value = item.inputPercent || '0';
-            document.getElementById('productionMeter').value = item.productionMeter || '';
+            document.getElementById('orderMtr').value = item.orderMtr || item.productionMeter || '';
             document.getElementById('rateMtr').value = item.rateMtr || '';
             document.getElementById('orderStatusToggle').checked = (item.status === 'completed');
 
@@ -789,8 +824,9 @@
                     <td><b>${item.partyName || '-'}</b></td>
                     <td>${item.poNo || '-'}</td>
                     <td><b style="color:#2F4F38;">${item.designNumber || item.designNo || '-'}</b></td>
+                    <td>${item.baseBeamCount || item.warpCount || '-'}</td>
+                    <td>${item.topBeamCount || '-'}</td>
                     <td>${item.orderMtr || '0'}</td>
-                    <td>${item.productionMeter || '-'}</td>
                     <td>₹${item.rateMtr || '0'}</td>
                     <td><span style="color:${statusColor}; font-weight:800; font-size:9px; background:rgba(0,0,0,0.05); padding:3px 8px; border-radius:12px; text-transform:uppercase;">${item.status || 'running'}</span></td>
                     <td>
@@ -819,8 +855,8 @@
                 if(item) {
                     let dNo = item.designNumber || item.designNo;
                     if(dNo) {
+                        let clean = dNo.toString().replace('#', '').trim().toLowerCase();
                         let designSpecs = JSON.parse(localStorage.getItem('design_specs')) || {};
-                        let clean = dNo ? dNo.toString().replace('#', '').trim().toLowerCase() : '';
                         let specKey = Object.keys(designSpecs).find(k => (k ? k.toString().replace('#', '').trim().toLowerCase() : '') === clean) || dNo;
 
                         if(!designSpecs[specKey]) designSpecs[specKey] = {};
@@ -861,6 +897,5 @@
             }
         }
     </script>
-    <script src="config.js"></script>
 </body>
 </html>
